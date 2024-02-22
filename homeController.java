@@ -3,7 +3,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,4 +44,13 @@ public class homeController {
 		Student savedStudentData = studentService.saveStudentData(student);
 		return savedStudentData;
 	}
+	
+	//get all student details
+	
+
+	@GetMapping("/getAllDetails")
+    public ResponseEntity<List<Student>> getAllDetails() {
+        List<Student> data = studentService.getAllDetails();
+        return ResponseEntity.ok(data);
+    }
 }
